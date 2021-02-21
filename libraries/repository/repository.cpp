@@ -58,7 +58,7 @@ bool MemoryImageRepository::is_name_exist(std::string const& name) const
     return repository_.find(name) != repository_.end();
 }      
 
-size_t MemoryImageRepository::count() const 
+std::size_t MemoryImageRepository::count() const 
 {
     return repository_.size();
 }

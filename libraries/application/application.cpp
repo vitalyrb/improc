@@ -9,7 +9,7 @@ bool Application::add(std::initializer_list<std::string> const& names, Functor &
 {
     if(!is_name_exist(names))
     {
-        for(auto && name: names)
+        for(const auto& name: names)
         {
             functors_[name] = func;
         }
@@ -81,7 +81,7 @@ Tokens Application::read_command_line(std::istream &input_stream, std::string &r
 
 bool Application::is_name_exist(std::initializer_list<std::string> const& names)
 {
-    for(auto && name: names)
+    for(const auto& name: names)
     {
         if(functors_.find(name) != functors_.end())
         {

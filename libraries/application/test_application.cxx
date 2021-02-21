@@ -34,7 +34,7 @@ public:
     void insert(std::string const&, cv::Mat const&) override {}
     void erase(std::string const&)  override {}
     cv::Mat find(std::string const&) override {return cv::Mat();}
-    size_t count() const override {return 0;};
+    std::size_t count() const override {return 0;};
     void print(std::ostream &) const override
     {
     }

@@ -27,7 +27,10 @@ bool ls(Tokens const& tokens)
     std::string path{"."};
     if (tokens.size() > 1) path = tokens[1];
     for (const auto & entry : fs::directory_iterator(path))
-        std::cout << entry.path() << std::endl;        
+        std::cout << entry.path() << "\n";      
+
+    std::cout.flush();
+
     return true;
 };  
 
@@ -54,12 +57,14 @@ std::unordered_map<std::string, std::string> help_strings = {
     if(tokens.size() > 1)
         std::cout << help_strings[tokens[1]] << std::endl;
     else
-        for(auto const& [n, s]: help_strings) std::cout << s << std::endl;
+        for(auto const& [n, s]: help_strings) std::cout << s << "\n";
+
+    std::cout.flush();
 
     return true;
 }
 
-void check_tokens(Tokens const& tokens, size_t count, std::string const& name)
+void check_tokens(Tokens const& tokens, std::size_t count, std::string const& name)
 {
     if(tokens.size() < count) throw user_exception("not enought parameters for exacution command " + name);
 }

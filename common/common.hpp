@@ -10,7 +10,7 @@
 
 namespace argus::bvi
 {
-typedef std::vector<std::string> Tokens;
+using Tokens = std::vector<std::string>;
 
 struct IImageRepository 
 {
@@ -18,8 +18,8 @@ struct IImageRepository
     virtual void erase(std::string const& name) = 0;
     virtual cv::Mat find(std::string const& name) = 0;
     virtual void print(std::ostream &os) const = 0;
-    virtual size_t count() const = 0;
-    virtual ~IImageRepository(){};
+    virtual std::size_t count() const = 0;
+    virtual ~IImageRepository() = default;
 };
 
 class user_exception: public std::exception
@@ -29,8 +29,8 @@ public:
         : msg_(message) {}
     explicit user_exception(const std::string& message)
         : msg_(message) {}
-    virtual ~user_exception() noexcept {}
-    virtual const char* what() const noexcept {
+    virtual ~user_exception() {}
+    const char* what() const noexcept override {
        return msg_.c_str();
     }
 protected:

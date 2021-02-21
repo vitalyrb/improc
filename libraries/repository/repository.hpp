@@ -14,7 +14,7 @@ public:
     void insert(std::string const& name, cv::Mat const &image) override;    
     void erase(std::string const& name)  override ;
     cv::Mat find(std::string const& name) override ;
-    size_t count() const override ;
+    std::size_t count() const override ;
     void print(std::ostream &os) const override;
 protected:
     bool is_name_exist(std::string const& name) const;

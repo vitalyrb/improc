@@ -9,7 +9,7 @@ bool pwd(Tokens const&);
 bool ls(Tokens const& tokens);
 bool help(Tokens const& tokens);
 
-void check_tokens(Tokens const& tokens, size_t count, std::string const& name);
+void check_tokens(Tokens const& tokens, std::size_t count, std::string const& name);
 
 class BlurFunctor
 {
@@ -18,7 +18,7 @@ public:
     bool operator() (Tokens const& tokens)
     {
         check_tokens(tokens, 4, "blur");
-        auto [prev_name, new_name, size_str] = std::tuple{tokens[1], tokens[2], tokens[3]};
+        const auto& [prev_name, new_name, size_str] = std::tuple{tokens[1], tokens[2], tokens[3]};
         int wh = atoi(size_str.c_str());
         cv::Size ksize{wh, wh};
         auto image = repository_->find(prev_name);
@@ -67,7 +67,7 @@ public:
         check_tokens(tokens, 2, "show");
         auto name = tokens[1];
         auto image = repository_->find(name);
-        std::string window_name = "Argus improc. " + name;
+        const std::string window_name = "Argus improc. " + name;
         cv::namedWindow(window_name, flags_);
         if(x_ != -1) cv::moveWindow(window_name, x_, y_);
         cv::imshow(window_name, image);
